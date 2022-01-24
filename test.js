@@ -5,16 +5,17 @@ async function test()
 {
     let shipment;
     
-    shipment = await shipping.shipment.get( 1234 ); console.log( shipment );
-    shipment = await shipping.shipment.get({ reference: '123' }); console.log( shipment );
+    shipment = await shipping.shipment.get( 1 ); console.log( shipment );
+
+    let shipments = await shipping.shipment.list({ limit: 2 }); console.log( shipments );
+    //shipment = await shipping.shipment.get({ reference: '123' }); console.log( shipment );
     
     return;
     
-    shipment = await shipping.shipment.create(
+    let id = /*shipment =*/ await shipping.shipment.create(
     {
-        shipper     : 'dpd-sk',
-        sender      : { uid: 'hk-green', url: 'https://hk-green.sk' },
-        customer    :
+        sender  : 'gls:hk-green', // 'packeta:hk-green', 'dpd:hk-green'
+        customer:
         {
             email   : 'radixxko@gmail.com',
             phone   : '+421951002063',
@@ -24,15 +25,11 @@ async function test()
             city    : 'Poprad',
             country : 'SK'
         },
-        packages    : 
-        [
-            { weight: 1, width: 10, height: 10, depth: 10 },
-            { reverse: true }
-        ],
-        reference   : '54000021',
-        currency    : 'EUR',
-        value       : 251.45,
-        cod         : true,
+        packages: [{ weight: 1 }, { weight: 1 }, { weight: 1 }, { weight: 1 }, { weight: 1 }],
+        reference : '231231',
+        currency: 'EUR',
+        value   : 254.30,
+        data    : { point: { id: 139 }}
     });
 
     let labels = await shipping.shipment.labels( 312312312 );
