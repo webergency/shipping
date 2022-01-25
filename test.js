@@ -7,7 +7,7 @@ async function test()
     
     shipment = await shipping.shipment.get( 1 ); console.log( shipment );
 
-    let shipments = await shipping.shipment.list({ limit: 2 }); console.log( shipments );
+    let shipments = await shipping.shipment.list({ limit: 2, filter: { _id: { $in: [ 1, 2 ]}}}); console.log( 'shipments', shipments );
     //shipment = await shipping.shipment.get({ reference: '123' }); console.log( shipment );
     
     return;
