@@ -3,18 +3,25 @@ const shipping = new (require('./lib/shipping'))( 'XgltRtUcReqJugV4aZRLCQ', 'Wj2
 
 async function test()
 {
-    let shipment;
+    let shipment, shipments, labels;
     
-    shipment = await shipping.shipment.get( 1 ); console.log( shipment );
+    /** /shipment = await shipping.shipment.get( 2276556652513432 );
+    
+    console.log( shipment );/**/
 
-    let shipments = await shipping.shipment.list({ limit: 2, filter: { _id: { $in: [ 1, 2 ]}}}); console.log( 'shipments', shipments );
-    //shipment = await shipping.shipment.get({ reference: '123' }); console.log( shipment );
+    labels = await shipping.shipment.labels( 2276556652513432, { width: 152, height: 102 });
+
+    console.log( labels );/**/
+
+    //shipments = await shipping.shipment.list({ limit: 2 });
+
+    //console.log( shipments );
+
+    //return;
     
-    return;
-    
-    let id = /*shipment =*/ await shipping.shipment.create(
+    /** /shipment = await shipping.shipment.create(
     {
-        sender  : 'gls:hk-green', // 'packeta:hk-green', 'dpd:hk-green'
+        sender  : 'packeta:hk-green', // 'packeta:hk-green', 'dpd:hk-green'
         customer:
         {
             email   : 'radixxko@gmail.com',
@@ -22,17 +29,19 @@ async function test()
             name    : 'Tomáš Korenko',
             address : 'Šoltésovej 3381/4',
             zip     : '05801',
-            city    : 'Poprad',
+            city    : 'Poprad', 
             country : 'SK'
         },
-        packages: [{ weight: 1 }, { weight: 1 }, { weight: 1 }, { weight: 1 }, { weight: 1 }],
-        reference : '231231',
+        packages: [{ weight: 1 }, { weight: 1 }],
+        reference : '7700001',
         currency: 'EUR',
         value   : 254.30,
         data    : { point: { id: 139 }}
     });
 
-    let labels = await shipping.shipment.labels( 312312312 );
+    console.log( shipment );/**/
+
+    //let labels = await shipping.shipment.labels( 312312312 );
 }
 
 test();
