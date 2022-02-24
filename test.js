@@ -5,9 +5,9 @@ async function test()
 {
     let shipment, shipments, labels;
     
-    /** /shipment = await shipping.shipment.get( 2276556652513432 );
+    /**/shipment = await shipping.shipment.get( 2392352778179652 );
     
-    console.log( shipment );/**/
+    console.log( shipment );/** /
 
     labels = await shipping.shipment.labels( 2276556652513432, { width: 152, height: 102 });
 
