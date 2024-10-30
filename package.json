@@ -1,7 +1,7 @@
 {
   "name": "@webergency/shipping",
   "description": "CRM Core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "radixxko",
   "license": "MIT",
   "main": "lib/shipping.js",
@@ -17,6 +17,6 @@
     "webergency"
   ],
   "dependencies": {
-    "@webergency/api": "^0.0.1"
+    "@webergency/api": "^0.0.6"
   }
 }
